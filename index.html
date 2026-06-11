@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Risol Mayo Raka</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+font-family:'Poppins',sans-serif;
+}
+
+.hero-bg{
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url('https://images.unsplash.com/photo-1550547660-d9450f859349');
+background-size:cover;
+background-position:center;
+}
+</style>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- NAVBAR -->
+
+<nav class="bg-white shadow sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+<h1 class="font-bold text-2xl text-orange-500">
+Risol Mayo Raka
+</h1>
+
+<button onclick="toggleDark()"
+class="bg-gray-200 px-4 py-2 rounded-lg">
+🌙
+</button>
+
+</div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero-bg h-[80vh] flex items-center justify-center text-center text-white">
+
+<div>
+
+<h1 class="text-5xl md:text-7xl font-bold mb-4">
+Risol Mayo Raka
+</h1>
+
+<p class="text-xl mb-6">
+Renyah di Luar, Lumer di Dalam
+</p>
+
+<a href="#produk"
+class="bg-orange-500 px-8 py-4 rounded-xl font-semibold hover:bg-orange-600">
+Lihat Menu
+</a>
+
+</div>
+
+</section>
+
+<!-- PRODUK -->
+
+<section id="produk" class="max-w-7xl mx-auto py-20 px-6">
+
+<h2 class="text-4xl font-bold text-center mb-12">
+Menu Favorit
+</h2>
+
+<div id="product-container"
+class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+</div>
+
+</section>
+
+<!-- CART -->
+
+<section class="bg-orange-500 text-white py-12">
+
+<div class="max-w-5xl mx-auto px-6">
+
+<div class="flex justify-between items-center">
+
+<div>
+<h3 class="text-2xl font-bold">
+Keranjang
+</h3>
+
+<p id="cart-count">
+0 Item
+</p>
+</div>
+
+<button
+onclick="checkoutWA()"
+class="bg-white text-orange-500 px-6 py-3 rounded-xl font-bold">
+Checkout WhatsApp
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONI -->
+
+<section class="py-20 bg-white">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-12">
+Testimoni Pelanggan
+</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div class="shadow-lg p-6 rounded-2xl">
+⭐⭐⭐⭐⭐
+<p class="mt-3">
+Risolnya renyah dan isinya banyak.
+</p>
+<b>- Siti</b>
+</div>
+
+<div class="shadow-lg p-6 rounded-2xl">
+⭐⭐⭐⭐⭐
+<p class="mt-3">
+Anak-anak suka yang coklat.
+</p>
+<b>- Rina</b>
+</div>
+
+<div class="shadow-lg p-6 rounded-2xl">
+⭐⭐⭐⭐⭐
+<p class="mt-3">
+Harga murah rasanya premium.
+</p>
+<b>- Andi</b>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MAPS -->
+
+<section class="py-20">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-8">
+Lokasi Kami
+</h2>
+
+<iframe
+class="rounded-2xl w-full"
+height="450"
+src="https://maps.google.com/maps?q=BSD&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="bg-gray-900 text-white py-12 text-center">
+
+<h3 class="text-3xl font-bold mb-3">
+Risol Mayo Raka
+</h3>
+
+<p>
+Pesan sekarang via WhatsApp
+</p>
+
+</footer>
+
+<script>
+
+const products = [
+
+{
+name:"Risol Mayo Ori & Pedas",
+price:2500,
+image:"https://images.unsplash.com/photo-1544025162-d76694265947"
+},
+
+{
+name:"Risol Ayam Suwir",
+price:2500,
+image:"https://images.unsplash.com/photo-1604908177522-4729d6f8ef6f"
+},
+
+{
+name:"Risol Coklat",
+price:3500,
+promo:"10K Dapat 3",
+image:"https://images.unsplash.com/photo-1511381939415-e44015466834"
+},
+
+{
+name:"Risol Matcha",
+price:3500,
+promo:"10K Dapat 3",
+image:"https://images.unsplash.com/photo-1570197788417-0e82375c9371"
+}
+
+];
+
+const cart=[];
+
+const container =
+document.getElementById("product-container");
+
+products.forEach(product=>{
+
+container.innerHTML += `
+
+<div class="bg-white shadow-xl rounded-2xl overflow-hidden hover:-translate-y-2 transition">
+
+<img
+src="${product.image}"
+class="w-full h-60 object-cover">
+
+<div class="p-5">
+
+<h3 class="font-bold text-lg">
+${product.name}
+</h3>
+
+<p class="text-orange-500 font-bold my-3">
+Rp ${product.price.toLocaleString('id-ID')}
+</p>
+
+${product.promo ?
+`<span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">${product.promo}</span>`
+:''}
+
+<button
+onclick="addToCart('${product.name}',${product.price})"
+class="mt-4 w-full bg-orange-500 text-white py-3 rounded-xl">
+
+Tambah Keranjang
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+function addToCart(name,price){
+
+cart.push({name,price});
+
+document.getElementById("cart-count")
+.innerText =
+cart.length + " Item";
+
+}
+
+function checkoutWA(){
+
+if(cart.length===0){
+
+alert("Keranjang kosong");
+return;
+
+}
+
+let text =
+"Halo Kak, saya ingin memesan:%0A%0A";
+
+let total=0;
+
+cart.forEach(item=>{
+
+text += "• " + item.name + "%0A";
+total += item.price;
+
+});
+
+text += "%0A Total : Rp " +
+total.toLocaleString("id-ID");
+
+window.open(
+"https://wa.me/6281234567890?text="+text
+);
+
+}
+
+function toggleDark(){
+
+document.body.classList.toggle("bg-gray-900");
+document.body.classList.toggle("text-white");
+
+}
+
+</script>
+
+</body>
+</html>
