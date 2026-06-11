@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/api", "destination": "/api/index.js" },
+    { "source": "/api/:action", "destination": "/api/index.js?action=:action" },
+    { "source": "/(.*)", "destination": "/public/index.html" }
+  ],
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 10
+    }
+  }
+}
