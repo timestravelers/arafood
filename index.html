@@ -1,318 +1,1202 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Risol Mayo Premium - Camilan Renyah Isi Mayo Creamy</title>
+<meta name="description" content="Jual Risol Mayo premium homemade, renyah di luar, creamy di dalam. Pesan sekarang via WhatsApp!" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥟</text></svg>" />
 
-<title>Risol Mayo Raka</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
 
 <style>
-body{
-font-family:'Poppins',sans-serif;
-}
+  :root {
+    --primary: #D4A017;       /* Gold risol */
+    --primary-dark: #B8860B;
+    --secondary: #8B4513;     /* Brown kulit risol */
+    --accent: #FFC107;        /* Kuning mayo */
+    --cream: #FFF8E1;
+    --dark: #2C1810;
+    --light: #FFFDF5;
+  }
 
-.hero-bg{
-background:
-linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-url('https://images.unsplash.com/photo-1550547660-d9450f859349');
-background-size:cover;
-background-position:center;
-}
+  * { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .brand-font { font-family: 'Playfair Display', serif; }
+
+  /* NAVBAR */
+  .navbar-custom {
+    background: rgba(255, 253, 245, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+  }
+  .navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--secondary) !important;
+  }
+  .navbar-brand span { color: var(--primary); font-style: italic; }
+  .nav-link {
+    color: var(--dark) !important;
+    font-weight: 500;
+    margin: 0 8px;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-link:hover { color: var(--primary) !important; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0; height: 2px;
+    background: var(--primary);
+    transition: all 0.3s;
+  }
+  .nav-link:hover::after { width: 80%; left: 10%; }
+
+  .btn-primary-custom {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(212, 160, 23, 0.4);
+    transition: all 0.3s;
+  }
+  .btn-primary-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 160, 23, 0.6);
+    color: white;
+  }
+  .btn-wa {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+  .btn-wa:hover { background: #128C7E; color: white; transform: translateY(-2px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(44,24,16,0.85), rgba(139,69,19,0.75)),
+                url('https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=1600') center/cover;
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255,193,7,0.15), transparent 50%);
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  .hero h1 span { color: var(--accent); font-style: italic; }
+  .hero .badge-hero {
+    background: rgba(255,193,7,0.2);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .hero-img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  /* SECTION */
+  section { padding: 80px 0; }
+  .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .section-title small {
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  .section-title h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: var(--dark);
+    margin-top: 10px;
+  }
+  .section-title .line {
+    width: 60px; height: 4px;
+    background: var(--primary);
+    margin: 15px auto;
+    border-radius: 2px;
+  }
+
+  /* PRODUK CARD */
+  .produk-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    transition: all 0.4s;
+    height: 100%;
+    border: 1px solid rgba(212,160,23,0.1);
+  }
+  .produk-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(212,160,23,0.25);
+  }
+  .produk-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+  }
+  .produk-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .produk-card:hover .produk-img-wrap img { transform: scale(1.1); }
+  .produk-badge {
+    position: absolute;
+    top: 15px; left: 15px;
+    background: var(--accent);
+    color: var(--dark);
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 2;
+  }
+  .produk-body { padding: 20px; }
+  .produk-body h5 {
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .produk-price {
+    color: var(--primary-dark);
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin: 10px 0;
+  }
+  .produk-price small {
+    color: #999;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-decoration: line-through;
+    margin-left: 8px;
+  }
+
+  /* TENTANG */
+  .tentang {
+    background: linear-gradient(135deg, var(--cream), #fff);
+  }
+  .feature-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    height: 100%;
+  }
+  .feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212,160,23,0.2);
+  }
+  .feature-icon {
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  /* TESTIMONI */
+  .testi-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    height: 100%;
+    position: relative;
+    border-top: 4px solid var(--primary);
+  }
+  .testi-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 20px;
+    font-size: 5rem;
+    color: var(--accent);
+    font-family: serif;
+    line-height: 1;
+  }
+  .testi-stars { color: var(--accent); margin-bottom: 10px; }
+  .testi-avatar {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 12px;
+  }
+
+  /* FAQ */
+  .accordion-item {
+    border: none !important;
+    margin-bottom: 12px;
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .accordion-button {
+    font-weight: 600;
+    color: var(--dark);
+    background: white;
+  }
+  .accordion-button:not(.collapsed) {
+    background: var(--cream);
+    color: var(--primary-dark);
+    box-shadow: none;
+  }
+  .accordion-button:focus { box-shadow: none; border-color: var(--primary); }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, var(--secondary), var(--dark));
+    color: white;
+    padding: 70px 0;
+    text-align: center;
+  }
+  .cta-section h2 { font-weight: 900; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: #ccc;
+    padding: 60px 0 20px;
+  }
+  footer h5 { color: var(--accent); font-weight: 700; margin-bottom: 20px; font-family: 'Poppins'; }
+  footer a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--accent); }
+  .social-icon {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    transition: all 0.3s;
+  }
+  .social-icon:hover { background: var(--primary); transform: translateY(-3px); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  /* ADMIN BUTTON */
+  .admin-fab {
+    position: fixed;
+    bottom: 25px; right: 25px;
+    width: 55px; height: 55px;
+    background: var(--dark);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: all 0.3s;
+    border: none;
+  }
+  .admin-fab:hover { transform: rotate(90deg) scale(1.1); background: var(--primary); color: white; }
+
+  .wa-float {
+    position: fixed;
+    bottom: 25px; left: 25px;
+    width: 55px; height: 55px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    box-shadow: 0 5px 20px rgba(37,211,102,0.5);
+    z-index: 999;
+    animation: pulse 2s infinite;
+    text-decoration: none;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 5px 20px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 5px 30px rgba(37,211,102,0.9); }
+  }
+
+  /* ADMIN PANEL */
+  .admin-panel { display: none; }
+  .admin-panel.active { display: block; }
+  .admin-header {
+    background: linear-gradient(135deg, var(--dark), var(--secondary));
+    color: white;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+  }
+  .admin-body { padding: 20px; background: #f8f9fa; }
+  .admin-tabs .nav-link {
+    color: var(--dark) !important;
+    font-weight: 500;
+    border-radius: 8px 8px 0 0;
+  }
+  .admin-tabs .nav-link.active {
+    background: var(--primary) !important;
+    color: white !important;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { text-align: center; padding-top: 100px; }
+    .hero-img { margin-top: 30px; }
+    section { padding: 50px 0; }
+  }
 </style>
-
 </head>
+<body>
 
-<body class="bg-gray-50 text-gray-800">
-
-<!-- NAVBAR -->
-
-<nav class="bg-white shadow sticky top-0 z-50">
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-<h1 class="font-bold text-2xl text-orange-500">
-Risol Mayo Raka
-</h1>
-
-<button onclick="toggleDark()"
-class="bg-gray-200 px-4 py-2 rounded-lg">
-🌙
-</button>
-
-</div>
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      🥟 Risol <span>Mayo</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <a href="#" class="btn btn-wa" id="navWaBtn">
+            <i class="fab fa-whatsapp"></i> Pesan
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
-<!-- HERO -->
-
-<section class="hero-bg h-[80vh] flex items-center justify-center text-center text-white">
-
-<div>
-
-<h1 class="text-5xl md:text-7xl font-bold mb-4">
-Risol Mayo Raka
-</h1>
-
-<p class="text-xl mb-6">
-Renyah di Luar, Lumer di Dalam
-</p>
-
-<a href="#produk"
-class="bg-orange-500 px-8 py-4 rounded-xl font-semibold hover:bg-orange-600">
-Lihat Menu
-</a>
-
-</div>
-
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="badge-hero">⭐ #1 Risol Mayo Terlaris</span>
+        <h1>Risol Mayo <span>Creamy</span><br>Renyah di Setiap Gigitan</h1>
+        <p class="lead mt-3 mb-4" style="color:#eee;">
+          Nikmati kelezatan risol homemade dengan isian mayones creamy, smoked beef, dan telur yang melimpah. Dibuat fresh setiap hari dengan bahan berkualitas!
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#produk" class="btn btn-primary-custom btn-lg">
+            <i class="fas fa-utensils me-2"></i>Lihat Menu
+          </a>
+          <a href="#" class="btn btn-wa btn-lg" id="heroWaBtn">
+            <i class="fab fa-whatsapp me-2"></i>Pesan Sekarang
+          </a>
+        </div>
+        <div class="row mt-5 text-center text-lg-start">
+          <div class="col-4"><h3 class="text-warning fw-bold" id="stat1">500+</h3><small>Terjual/Hari</small></div>
+          <div class="col-4"><h3 class="text-warning fw-bold" id="stat2">4.9★</h3><small>Rating</small></div>
+          <div class="col-4"><h3 class="text-warning fw-bold" id="stat3">100%</h3><small>Halal</small></div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=600" alt="Risol Mayo" class="hero-img" onerror="this.src='https://via.placeholder.com/500x500/D4A017/fff?text=Risol+Mayo'">
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PRODUK -->
-
-<section id="produk" class="max-w-7xl mx-auto py-20 px-6">
-
-<h2 class="text-4xl font-bold text-center mb-12">
-Menu Favorit
-</h2>
-
-<div id="product-container"
-class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-</div>
-
+<!-- ============ PRODUK ============ -->
+<section id="produk">
+  <div class="container">
+    <div class="section-title">
+      <small>Menu Kami</small>
+      <h2>Produk Unggulan</h2>
+      <div class="line"></div>
+      <p class="text-muted">Pilihan risol mayo dengan berbagai varian rasa yang menggugah selera</p>
+    </div>
+    <div class="row g-4" id="produkContainer"></div>
+  </div>
 </section>
 
-<!-- CART -->
-
-<section class="bg-orange-500 text-white py-12">
-
-<div class="max-w-5xl mx-auto px-6">
-
-<div class="flex justify-between items-center">
-
-<div>
-<h3 class="text-2xl font-bold">
-Keranjang
-</h3>
-
-<p id="cart-count">
-0 Item
-</p>
-</div>
-
-<button
-onclick="checkoutWA()"
-class="bg-white text-orange-500 px-6 py-3 rounded-xl font-bold">
-Checkout WhatsApp
-</button>
-
-</div>
-
-</div>
-
+<!-- ============ TENTANG ============ -->
+<section class="tentang" id="tentang">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600" alt="Tentang Kami" class="img-fluid rounded-4 shadow" onerror="this.src='https://via.placeholder.com/600x400/8B4513/fff?text=Dapur+Kami'">
+      </div>
+      <div class="col-lg-6">
+        <small class="text-warning fw-bold" style="letter-spacing:3px;">TENTANG KAMI</small>
+        <h2 class="mt-2 mb-3" style="font-weight:900;">Cita Rasa Rumahan dengan <span style="color:var(--primary);">Kualitas Premium</span></h2>
+        <p id="tentangDesk">Risol Mayo kami dibuat dengan resep turun-temurun yang telah disempurnakan. Menggunakan bahan-bahan pilihan terbaik, mayones premium, dan diolah oleh tangan-tangan terampil untuk menghasilkan risol dengan cita rasa yang tak terlupakan.</p>
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <div class="feature-box">
+              <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+              <h6 class="fw-bold">Bahan Segar</h6>
+              <small class="text-muted">100% bahan segar pilihan setiap hari</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-box">
+              <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+              <h6 class="fw-bold">Halal & Higienis</h6>
+              <small class="text-muted">Tersertifikasi halal dan diproduksi secara higienis</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-box">
+              <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+              <h6 class="fw-bold">Pengiriman Cepat</h6>
+              <small class="text-muted">Siap diantar langsung ke rumah Anda</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="feature-box">
+              <div class="feature-icon"><i class="fas fa-heart"></i></div>
+              <h6 class="fw-bold">Dibuat dengan Cinta</h6>
+              <small class="text-muted">Setiap risol dibuat penuh perhatian</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- TESTIMONI -->
-
-<section class="py-20 bg-white">
-
-<div class="max-w-6xl mx-auto px-6">
-
-<h2 class="text-4xl font-bold text-center mb-12">
-Testimoni Pelanggan
-</h2>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<div class="shadow-lg p-6 rounded-2xl">
-⭐⭐⭐⭐⭐
-<p class="mt-3">
-Risolnya renyah dan isinya banyak.
-</p>
-<b>- Siti</b>
-</div>
-
-<div class="shadow-lg p-6 rounded-2xl">
-⭐⭐⭐⭐⭐
-<p class="mt-3">
-Anak-anak suka yang coklat.
-</p>
-<b>- Rina</b>
-</div>
-
-<div class="shadow-lg p-6 rounded-2xl">
-⭐⭐⭐⭐⭐
-<p class="mt-3">
-Harga murah rasanya premium.
-</p>
-<b>- Andi</b>
-</div>
-
-</div>
-
-</div>
-
+<!-- ============ TESTIMONI ============ -->
+<section id="testimoni">
+  <div class="container">
+    <div class="section-title">
+      <small>Testimoni</small>
+      <h2>Kata Mereka</h2>
+      <div class="line"></div>
+    </div>
+    <div class="row g-4" id="testiContainer"></div>
+  </div>
 </section>
 
-<!-- MAPS -->
-
-<section class="py-20">
-
-<div class="max-w-6xl mx-auto px-6">
-
-<h2 class="text-4xl font-bold text-center mb-8">
-Lokasi Kami
-</h2>
-
-<iframe
-class="rounded-2xl w-full"
-height="450"
-src="https://maps.google.com/maps?q=BSD&t=&z=13&ie=UTF8&iwloc=&output=embed">
-</iframe>
-
-</div>
-
+<!-- ============ FAQ ============ -->
+<section id="faq" style="background: var(--cream);">
+  <div class="container">
+    <div class="section-title">
+      <small>FAQ</small>
+      <h2>Pertanyaan Umum</h2>
+      <div class="line"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion" id="faqAccordion"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============ CTA ============ -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="mb-3">Lapar? Pesan Sekarang Juga!</h2>
+    <p class="mb-4">Dapatkan diskon spesial untuk pemesanan dalam jumlah banyak</p>
+    <a href="#" class="btn btn-wa btn-lg" id="ctaWaBtn">
+      <i class="fab fa-whatsapp me-2"></i>Chat WhatsApp
+    </a>
+  </div>
+</section>
 
-<footer class="bg-gray-900 text-white py-12 text-center">
-
-<h3 class="text-3xl font-bold mb-3">
-Risol Mayo Raka
-</h3>
-
-<p>
-Pesan sekarang via WhatsApp
-</p>
-
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h5>🥟 Risol Mayo</h5>
+        <p id="footerAbout">Camilan risol mayo premium homemade dengan cita rasa creamy yang tak terlupakan. Dibuat fresh setiap hari untuk Anda.</p>
+        <div class="mt-3">
+          <a href="#" class="social-icon" id="socFb"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" id="socIg"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" id="socTt"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-icon" id="socWa"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>Menu</h5>
+        <p><a href="#home">Home</a></p>
+        <p><a href="#produk">Produk</a></p>
+        <p><a href="#tentang">Tentang</a></p>
+        <p><a href="#testimoni">Testimoni</a></p>
+        <p><a href="#faq">FAQ</a></p>
+      </div>
+      <div class="col-md-4">
+        <h5>Kontak</h5>
+        <p id="footerAlamat"><i class="fas fa-map-marker-alt me-2"></i> Jl. Contoh No. 123, Jakarta</p>
+        <p id="footerTelp"><i class="fas fa-phone me-2"></i> +62 812-3456-7890</p>
+        <p id="footerEmail"><i class="fas fa-envelope me-2"></i> info@risolmayo.com</p>
+        <p id="footerJam"><i class="fas fa-clock me-2"></i> Buka: 08:00 - 21:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="mb-0">&copy; <span id="year"></span> Risol Mayo Premium. All Rights Reserved. | Designed with ❤️</p>
+    </div>
+  </div>
 </footer>
 
-<script>
-
-const products = [
-
-{
-name:"Risol Mayo Ori & Pedas",
-price:2500,
-image:"https://images.unsplash.com/photo-1544025162-d76694265947"
-},
-
-{
-name:"Risol Ayam Suwir",
-price:2500,
-image:"https://images.unsplash.com/photo-1604908177522-4729d6f8ef6f"
-},
-
-{
-name:"Risol Coklat",
-price:3500,
-promo:"10K Dapat 3",
-image:"https://images.unsplash.com/photo-1511381939415-e44015466834"
-},
-
-{
-name:"Risol Matcha",
-price:3500,
-promo:"10K Dapat 3",
-image:"https://images.unsplash.com/photo-1570197788417-0e82375c9371"
-}
-
-];
-
-const cart=[];
-
-const container =
-document.getElementById("product-container");
-
-products.forEach(product=>{
-
-container.innerHTML += `
-
-<div class="bg-white shadow-xl rounded-2xl overflow-hidden hover:-translate-y-2 transition">
-
-<img
-src="${product.image}"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="font-bold text-lg">
-${product.name}
-</h3>
-
-<p class="text-orange-500 font-bold my-3">
-Rp ${product.price.toLocaleString('id-ID')}
-</p>
-
-${product.promo ?
-`<span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">${product.promo}</span>`
-:''}
-
-<button
-onclick="addToCart('${product.name}',${product.price})"
-class="mt-4 w-full bg-orange-500 text-white py-3 rounded-xl">
-
-Tambah Keranjang
-
+<!-- FLOATING BUTTONS -->
+<a href="#" class="wa-float" id="waFloat"><i class="fab fa-whatsapp"></i></a>
+<button class="admin-fab" onclick="openAdmin()" title="Admin Panel">
+  <i class="fas fa-cog"></i>
 </button>
 
+<!-- ============ ADMIN LOGIN MODAL ============ -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title"><i class="fas fa-lock me-2"></i>Admin Login</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-control" id="loginUser" value="admin">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" id="loginPass" placeholder="admin123">
+        </div>
+        <button class="btn btn-primary-custom w-100" onclick="doLogin()">Masuk</button>
+        <small class="text-muted d-block mt-2 text-center">Default: admin / admin123</small>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- ============ ADMIN PANEL MODAL ============ -->
+<div class="modal fade" id="adminModal" tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="admin-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0"><i class="fas fa-cogs me-2"></i>Panel Admin CMS</h4>
+        <div>
+          <button class="btn btn-sm btn-warning me-2" onclick="exportData()"><i class="fas fa-download"></i> Export</button>
+          <button class="btn btn-sm btn-light me-2" onclick="document.getElementById('importFile').click()"><i class="fas fa-upload"></i> Import</button>
+          <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+          <button class="btn btn-sm btn-danger" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+      </div>
+      <div class="admin-body">
+        <ul class="nav nav-tabs admin-tabs mb-3" role="tablist">
+          <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabProduk">Produk</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabToko">Info Toko</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabTesti">Testimoni</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabFaq">FAQ</button></li>
+        </ul>
+
+        <div class="tab-content">
+          <!-- TAB PRODUK -->
+          <div class="tab-pane fade show active" id="tabProduk">
+            <button class="btn btn-primary-custom mb-3" onclick="addProduk()"><i class="fas fa-plus"></i> Tambah Produk</button>
+            <div class="table-responsive">
+              <table class="table table-hover bg-white">
+                <thead class="table-dark">
+                  <tr><th>Gambar</th><th>Nama</th><th>Harga</th><th>Stok</th><th>Aksi</th></tr>
+                </thead>
+                <tbody id="adminProdukList"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB TOKO -->
+          <div class="tab-pane fade" id="tabToko">
+            <div class="bg-white p-4 rounded">
+              <h5 class="mb-3">Informasi Toko</h5>
+              <div class="row g-3">
+                <div class="col-md-6"><label class="form-label">Nama Toko</label><input type="text" class="form-control" id="inpNamaToko"></div>
+                <div class="col-md-6"><label class="form-label">No. WhatsApp (format: 628xxx)</label><input type="text" class="form-control" id="inpWa"></div>
+                <div class="col-md-12"><label class="form-label">Alamat</label><input type="text" class="form-control" id="inpAlamat"></div>
+                <div class="col-md-6"><label class="form-label">Email</label><input type="email" class="form-control" id="inpEmail"></div>
+                <div class="col-md-6"><label class="form-label">Jam Buka</label><input type="text" class="form-control" id="inpJam"></div>
+                <div class="col-md-4"><label class="form-label">Facebook URL</label><input type="text" class="form-control" id="inpFb"></div>
+                <div class="col-md-4"><label class="form-label">Instagram URL</label><input type="text" class="form-control" id="inpIg"></div>
+                <div class="col-md-4"><label class="form-label">TikTok URL</label><input type="text" class="form-control" id="inpTt"></div>
+                <div class="col-md-12"><label class="form-label">Deskripsi Tentang</label><textarea class="form-control" id="inpTentang" rows="3"></textarea></div>
+                <div class="col-md-4"><label class="form-label">Stat 1 (cth: 500+)</label><input type="text" class="form-control" id="inpStat1"></div>
+                <div class="col-md-4"><label class="form-label">Stat 2 (cth: 4.9★)</label><input type="text" class="form-control" id="inpStat2"></div>
+                <div class="col-md-4"><label class="form-label">Stat 3 (cth: 100%)</label><input type="text" class="form-control" id="inpStat3"></div>
+              </div>
+              <button class="btn btn-primary-custom mt-3" onclick="saveToko()"><i class="fas fa-save"></i> Simpan Info Toko</button>
+            </div>
+          </div>
+
+          <!-- TAB TESTIMONI -->
+          <div class="tab-pane fade" id="tabTesti">
+            <button class="btn btn-primary-custom mb-3" onclick="addTesti()"><i class="fas fa-plus"></i> Tambah Testimoni</button>
+            <div class="table-responsive">
+              <table class="table table-hover bg-white">
+                <thead class="table-dark">
+                  <tr><th>Nama</th><th>Rating</th><th>Pesan</th><th>Aksi</th></tr>
+                </thead>
+                <tbody id="adminTestiList"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB FAQ -->
+          <div class="tab-pane fade" id="tabFaq">
+            <button class="btn btn-primary-custom mb-3" onclick="addFaq()"><i class="fas fa-plus"></i> Tambah FAQ</button>
+            <div class="table-responsive">
+              <table class="table table-hover bg-white">
+                <thead class="table-dark">
+                  <tr><th>Pertanyaan</th><th>Jawaban</th><th>Aksi</th></tr>
+                </thead>
+                <tbody id="adminFaqList"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-`;
+<!-- ============ FORM PRODUK MODAL ============ -->
+<div class="modal fade" id="formProdukModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title fw-bold"><i class="fas fa-box me-2"></i><span id="formProdukTitle">Tambah Produk</span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="pIdx">
+        <div class="mb-3"><label class="form-label">Nama Produk</label><input type="text" class="form-control" id="pNama"></div>
+        <div class="mb-3"><label class="form-label">Harga (Rp)</label><input type="number" class="form-control" id="pHarga"></div>
+        <div class="mb-3"><label class="form-label">Harga Coret (opsional)</label><input type="number" class="form-control" id="pHargaCoret"></div>
+        <div class="mb-3"><label class="form-label">Satuan</label><input type="text" class="form-control" id="pSatuan" placeholder="pcs / box"></div>
+        <div class="mb-3"><label class="form-label">Badge (opsional)</label><input type="text" class="form-control" id="pBadge" placeholder="Best Seller"></div>
+        <div class="mb-3"><label class="form-label">Deskripsi</label><textarea class="form-control" id="pDesk" rows="3"></textarea></div>
+        <div class="mb-3"><label class="form-label">URL Gambar</label><input type="text" class="form-control" id="pImg" placeholder="https://..."></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button class="btn btn-primary-custom" onclick="saveProduk()">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- ============ FORM TESTIMONI MODAL ============ -->
+<div class="modal fade" id="formTestiModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title fw-bold"><i class="fas fa-star me-2"></i>Testimoni</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="tIdx">
+        <div class="mb-3"><label class="form-label">Nama</label><input type="text" class="form-control" id="tNama"></div>
+        <div class="mb-3"><label class="form-label">Rating (1-5)</label><input type="number" min="1" max="5" class="form-control" id="tRating"></div>
+        <div class="mb-3"><label class="form-label">Pesan</label><textarea class="form-control" id="tPesan" rows="3"></textarea></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button class="btn btn-primary-custom" onclick="saveTesti()">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FORM FAQ MODAL ============ -->
+<div class="modal fade" id="formFaqModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title fw-bold"><i class="fas fa-question-circle me-2"></i>FAQ</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="fIdx">
+        <div class="mb-3"><label class="form-label">Pertanyaan</label><input type="text" class="form-control" id="fQ"></div>
+        <div class="mb-3"><label class="form-label">Jawaban</label><textarea class="form-control" id="fA" rows="3"></textarea></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button class="btn btn-primary-custom" onclick="saveFaq()">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* =========================================================
+   DATA DEFAULT (JSON) - EDIT DI SINI ATAU LEWAT PANEL ADMIN
+   ========================================================= */
+const DEFAULT_DATA = {
+  toko: {
+    nama: "Risol Mayo Premium",
+    wa: "6281234567890",
+    alamat: "Jl. Contoh No. 123, Jakarta Selatan",
+    email: "info@risolmayo.com",
+    jam: "08:00 - 21:00 WIB",
+    fb: "https://facebook.com/",
+    ig: "https://instagram.com/",
+    tt: "https://tiktok.com/@",
+    tentang: "Risol Mayo kami dibuat dengan resep turun-temurun yang telah disempurnakan. Menggunakan bahan-bahan pilihan terbaik, mayones premium, dan diolah oleh tangan-tangan terampil untuk menghasilkan risol dengan cita rasa yang tak terlupakan.",
+    footerAbout: "Camilan risol mayo premium homemade dengan cita rasa creamy yang tak terlupakan. Dibuat fresh setiap hari untuk Anda.",
+    stat1: "500+", stat2: "4.9★", stat3: "100%"
+  },
+  produk: [
+    { nama: "Risol Mayo Original", harga: 5000, hargaCoret: 7000, satuan: "pcs", badge: "Best Seller", desk: "Risol klasik dengan isian mayones creamy, smoked beef, dan telur rejab. Perpaduan rasa gurih dan creamy yang sempurna.", img: "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=500" },
+    { nama: "Risol Mayo Keju", harga: 6000, hargaCoret: 8000, satuan: "pcs", badge: "New", desk: "Varian spesial dengan tambahan keju mozzarella yang meleleh di dalam. Sensasi creamy double untuk pecinta keju!", img: "https://images.unsplash.com/photo-1625944277390-5b6d5a0e1e9f?w=500" },
+    { nama: "Risol Mayo Spicy", harga: 5500, hargaCoret: 7500, satuan: "pcs", badge: "Hot", desk: "Untuk pecinta pedas! Risol mayo dengan saus sambal spesial yang memberikan sensasi pedas menggoda.", img: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=500" },
+    { nama: "Risol Ragout Ayam", harga: 5000, hargaCoret: 7000, satuan: "pcs", badge: "", desk: "Risol dengan isian ragout ayam dan sayuran yang creamy dan gurih. Favorit keluarga Indonesia.", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500" },
+    { nama: "Paket Hemat 10pcs", harga: 45000, hargaCoret: 55000, satuan: "box", badge: "Hemat 20%", desk: "Paket isi 10 risol mayo campur (original, keju, spicy). Cocok untuk keluarga atau acara!", img: "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=500" },
+    { nama: "Paket Reseller 50pcs", harga: 200000, hargaCoret: 250000, satuan: "box", badge: "Reseller", desk: "Paket khusus reseller isi 50 risol mayo. Harga spesial untuk usaha Anda!", img: "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=500" }
+  ],
+  testimoni: [
+    { nama: "Siti Nurhaliza", rating: 5, pesan: "Risol mayo terenak yang pernah saya coba! Mayonesnya creamy banget, kulitnya renyah. Pasti order lagi!" },
+    { nama: "Budi Santoso", rating: 5, pesan: "Pelayanan cepat, rasa mantap. Cocok buat camilan keluarga di rumah. Anak-anak suka banget!" },
+    { nama: "Dewi Lestari", rating: 5, pesan: "Saya order untuk acara kantor, semua tamu suka. Harganya juga terjangkau. Recommended!" },
+    { nama: "Ahmad Rizky", rating: 4, pesan: "Risol mayo spicy-nya nampol! Pedasnya pas, nggak bikin enek. Top deh!" }
+  ],
+  faq: [
+    { q: "Apakah risol mayo ini halal?", a: "Ya, 100% halal dan terbuat dari bahan-bahan berkualitas yang tersertifikasi." },
+    { q: "Berapa lama ketahanan risol?", a: "Risol kami tahan 8 jam di suhu ruang, dan bisa disimpan di kulkas hingga 2 hari. Panaskan kembali dengan air fryer atau goreng untuk hasil terbaik." },
+    { q: "Apakah bisa delivery?", a: "Ya, kami melayani delivery area kota dengan minimal pembelian tertentu. Ongkir disesuaikan dengan jarak." },
+    { q: "Bagaimana cara pemesanan?", a: "Klik tombol WhatsApp pada produk yang diinginkan, atau hubungi admin kami langsung. Pembayaran via transfer bank/e-wallet." },
+    { q: "Apakah bisa untuk acara/reseller?", a: "Tentu! Kami menyediakan paket khusus untuk acara (catering) dan paket reseller dengan harga spesial. Hubungi admin untuk info lebih lanjut." }
+  ]
+};
+
+/* =========================================================
+   LOAD DATA (dari localStorage atau default)
+   ========================================================= */
+let DATA = JSON.parse(localStorage.getItem('risolMayoData')) || JSON.parse(JSON.stringify(DEFAULT_DATA));
+
+function saveData() {
+  localStorage.setItem('risolMayoData', JSON.stringify(DATA));
+  renderAll();
+}
+
+/* =========================================================
+   RENDER FUNCTIONS
+   ========================================================= */
+function formatRp(n) { return 'Rp ' + Number(n).toLocaleString('id-ID'); }
+
+function renderToko() {
+  const t = DATA.toko;
+  document.getElementById('navWaBtn').href = `https://wa.me/${t.wa}`;
+  document.getElementById('heroWaBtn').href = `https://wa.me/${t.wa}?text=Halo, saya mau pesan risol mayo`;
+  document.getElementById('ctaWaBtn').href = `https://wa.me/${t.wa}?text=Halo, saya tertarik dengan produk risol mayo`;
+  document.getElementById('waFloat').href = `https://wa.me/${t.wa}`;
+  document.getElementById('footerAbout').innerText = t.footerAbout;
+  document.getElementById('footerAlamat').innerHTML = `<i class="fas fa-map-marker-alt me-2"></i> ${t.alamat}`;
+  document.getElementById('footerTelp').innerHTML = `<i class="fas fa-phone me-2"></i> +${t.wa}`;
+  document.getElementById('footerEmail').innerHTML = `<i class="fas fa-envelope me-2"></i> ${t.email}`;
+  document.getElementById('footerJam').innerHTML = `<i class="fas fa-clock me-2"></i> ${t.jam}`;
+  document.getElementById('tentangDesk').innerText = t.tentang;
+  document.getElementById('stat1').innerText = t.stat1;
+  document.getElementById('stat2').innerText = t.stat2;
+  document.getElementById('stat3').innerText = t.stat3;
+  document.getElementById('socFb').href = t.fb;
+  document.getElementById('socIg').href = t.ig;
+  document.getElementById('socTt').href = t.tt;
+  document.getElementById('socWa').href = `https://wa.me/${t.wa}`;
+}
+
+function renderProduk() {
+  const c = document.getElementById('produkContainer');
+  c.innerHTML = DATA.produk.map((p, i) => `
+    <div class="col-md-6 col-lg-4">
+      <div class="produk-card">
+        <div class="produk-img-wrap">
+          ${p.badge ? `<span class="produk-badge">${p.badge}</span>` : ''}
+          <img src="${p.img}" alt="${p.nama}" onerror="this.src='https://via.placeholder.com/400x300/D4A017/fff?text=${encodeURIComponent(p.nama)}'">
+        </div>
+        <div class="produk-body">
+          <h5>${p.nama}</h5>
+          <div class="produk-price">
+            ${formatRp(p.harga)}<small>/${p.satuan}</small>
+            ${p.hargaCoret ? `<small>${formatRp(p.hargaCoret)}</small>` : ''}
+          </div>
+          <p class="text-muted small">${p.desk}</p>
+          <a href="https://wa.me/${DATA.toko.wa}?text=Halo, saya mau pesan *${p.nama}* (${formatRp(p.harga)}/${p.satuan})" target="_blank" class="btn btn-wa w-100">
+            <i class="fab fa-whatsapp me-2"></i>Pesan via WA
+          </a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTesti() {
+  const c = document.getElementById('testiContainer');
+  c.innerHTML = DATA.testimoni.map(t => `
+    <div class="col-md-6 col-lg-3">
+      <div class="testi-card">
+        <div class="testi-stars">${'★'.repeat(t.rating)}${'☆'.repeat(5-t.rating)}</div>
+        <p class="mb-3" style="font-style:italic;">${t.pesan}</p>
+        <div class="d-flex align-items-center">
+          <div class="testi-avatar">${t.nama.charAt(0)}</div>
+          <div><strong>${t.nama}</strong><br><small class="text-muted">Pelanggan</small></div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderFaq() {
+  const c = document.getElementById('faqAccordion');
+  c.innerHTML = DATA.faq.map((f, i) => `
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button ${i>0?'collapsed':''}" data-bs-toggle="collapse" data-bs-target="#faq${i}">
+          ${f.q}
+        </button>
+      </h2>
+      <div id="faq${i}" class="accordion-collapse collapse ${i===0?'show':''}" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">${f.a}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAll() {
+  renderToko();
+  renderProduk();
+  renderTesti();
+  renderFaq();
+}
+
+/* =========================================================
+   ADMIN AUTH
+   ========================================================= */
+let isLoggedIn = sessionStorage.getItem('adminLogin') === 'true';
+
+function openAdmin() {
+  if (!isLoggedIn) {
+    new bootstrap.Modal(document.getElementById('loginModal')).show();
+  } else {
+    showAdminPanel();
+  }
+}
+
+function doLogin() {
+  const u = document.getElementById('loginUser').value;
+  const p = document.getElementById('loginPass').value;
+  if (u === 'admin' && p === 'admin123') {
+    isLoggedIn = true;
+    sessionStorage.setItem('adminLogin', 'true');
+    bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+    showAdminPanel();
+  } else {
+    alert('Username atau password salah!');
+  }
+}
+
+function logout() {
+  if (confirm('Yakin ingin logout?')) {
+    isLoggedIn = false;
+    sessionStorage.removeItem('adminLogin');
+    bootstrap.Modal.getInstance(document.getElementById('adminModal')).hide();
+  }
+}
+
+function showAdminPanel() {
+  loadAdminForms();
+  renderAdminLists();
+  new bootstrap.Modal(document.getElementById('adminModal')).show();
+}
+
+function loadAdminForms() {
+  const t = DATA.toko;
+  inpNamaToko.value = t.nama;
+  inpWa.value = t.wa;
+  inpAlamat.value = t.alamat;
+  inpEmail.value = t.email;
+  inpJam.value = t.jam;
+  inpFb.value = t.fb;
+  inpIg.value = t.ig;
+  inpTt.value = t.tt;
+  inpTentang.value = t.tentang;
+  inpStat1.value = t.stat1;
+  inpStat2.value = t.stat2;
+  inpStat3.value = t.stat3;
+}
+
+function saveToko() {
+  DATA.toko.nama = inpNamaToko.value;
+  DATA.toko.wa = inpWa.value;
+  DATA.toko.alamat = inpAlamat.value;
+  DATA.toko.email = inpEmail.value;
+  DATA.toko.jam = inpJam.value;
+  DATA.toko.fb = inpFb.value;
+  DATA.toko.ig = inpIg.value;
+  DATA.toko.tt = inpTt.value;
+  DATA.toko.tentang = inpTentang.value;
+  DATA.toko.stat1 = inpStat1.value;
+  DATA.toko.stat2 = inpStat2.value;
+  DATA.toko.stat3 = inpStat3.value;
+  saveData();
+  alert('✅ Info toko berhasil disimpan!');
+}
+
+/* =========================================================
+   CRUD PRODUK
+   ========================================================= */
+function renderAdminLists() {
+  // Produk
+  document.getElementById('adminProdukList').innerHTML = DATA.produk.map((p, i) => `
+    <tr>
+      <td><img src="${p.img}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;" onerror="this.src='https://via.placeholder.com/60'"></td>
+      <td><strong>${p.nama}</strong><br><small class="text-muted">${p.satuan}</small></td>
+      <td>${formatRp(p.harga)}</td>
+      <td>${p.badge || '-'}</td>
+      <td>
+        <button class="btn btn-sm btn-warning me-1" onclick="editProduk(${i})"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-sm btn-danger" onclick="delProduk(${i})"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('');
+
+  // Testi
+  document.getElementById('adminTestiList').innerHTML = DATA.testimoni.map((t, i) => `
+    <tr>
+      <td>${t.nama}</td>
+      <td>${'★'.repeat(t.rating)}</td>
+      <td style="max-width:300px;">${t.pesan.substring(0,60)}...</td>
+      <td>
+        <button class="btn btn-sm btn-warning me-1" onclick="editTesti(${i})"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-sm btn-danger" onclick="delTesti(${i})"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('');
+
+  // FAQ
+  document.getElementById('adminFaqList').innerHTML = DATA.faq.map((f, i) => `
+    <tr>
+      <td style="max-width:250px;">${f.q}</td>
+      <td style="max-width:350px;">${f.a.substring(0,80)}...</td>
+      <td>
+        <button class="btn btn-sm btn-warning me-1" onclick="editFaq(${i})"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-sm btn-danger" onclick="delFaq(${i})"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function addProduk() {
+  document.getElementById('formProdukTitle').innerText = 'Tambah Produk';
+  pIdx.value = '';
+  pNama.value = ''; pHarga.value = ''; pHargaCoret.value = '';
+  pSatuan.value = 'pcs'; pBadge.value = ''; pDesk.value = ''; pImg.value = '';
+  new bootstrap.Modal(document.getElementById('formProdukModal')).show();
+}
+
+function editProduk(i) {
+  document.getElementById('formProdukTitle').innerText = 'Edit Produk';
+  const p = DATA.produk[i];
+  pIdx.value = i;
+  pNama.value = p.nama; pHarga.value = p.harga; pHargaCoret.value = p.hargaCoret || '';
+  pSatuan.value = p.satuan; pBadge.value = p.badge; pDesk.value = p.desk; pImg.value = p.img;
+  new bootstrap.Modal(document.getElementById('formProdukModal')).show();
+}
+
+function saveProduk() {
+  const idx = pIdx.value;
+  const obj = {
+    nama: pNama.value,
+    harga: Number(pHarga.value),
+    hargaCoret: Number(pHargaCoret.value) || 0,
+    satuan: pSatuan.value,
+    badge: pBadge.value,
+    desk: pDesk.value,
+    img: pImg.value
+  };
+  if (idx === '') DATA.produk.push(obj);
+  else DATA.produk[idx] = obj;
+  saveData();
+  renderAdminLists();
+  bootstrap.Modal.getInstance(document.getElementById('formProdukModal')).hide();
+}
+
+function delProduk(i) {
+  if (confirm('Hapus produk ini?')) {
+    DATA.produk.splice(i, 1);
+    saveData();
+    renderAdminLists();
+  }
+}
+
+/* =========================================================
+   CRUD TESTIMONI
+   ========================================================= */
+function addTesti() {
+  tIdx.value = ''; tNama.value = ''; tRating.value = 5; tPesan.value = '';
+  new bootstrap.Modal(document.getElementById('formTestiModal')).show();
+}
+function editTesti(i) {
+  tIdx.value = i;
+  const t = DATA.testimoni[i];
+  tNama.value = t.nama; tRating.value = t.rating; tPesan.value = t.pesan;
+  new bootstrap.Modal(document.getElementById('formTestiModal')).show();
+}
+function saveTesti() {
+  const idx = tIdx.value;
+  const obj = { nama: tNama.value, rating: Number(tRating.value), pesan: tPesan.value };
+  if (idx === '') DATA.testimoni.push(obj);
+  else DATA.testimoni[idx] = obj;
+  saveData();
+  renderAdminLists();
+  bootstrap.Modal.getInstance(document.getElementById('formTestiModal')).hide();
+}
+function delTesti(i) {
+  if (confirm('Hapus testimoni ini?')) {
+    DATA.testimoni.splice(i, 1);
+    saveData();
+    renderAdminLists();
+  }
+}
+
+/* =========================================================
+   CRUD FAQ
+   ========================================================= */
+function addFaq() {
+  fIdx.value = ''; fQ.value = ''; fA.value = '';
+  new bootstrap.Modal(document.getElementById('formFaqModal')).show();
+}
+function editFaq(i) {
+  fIdx.value = i;
+  fQ.value = DATA.faq[i].q; fA.value = DATA.faq[i].a;
+  new bootstrap.Modal(document.getElementById('formFaqModal')).show();
+}
+function saveFaq() {
+  const idx = fIdx.value;
+  const obj = { q: fQ.value, a: fA.value };
+  if (idx === '') DATA.faq.push(obj);
+  else DATA.faq[idx] = obj;
+  saveData();
+  renderAdminLists();
+  bootstrap.Modal.getInstance(document.getElementById('formFaqModal')).hide();
+}
+function delFaq(i) {
+  if (confirm('Hapus FAQ ini?')) {
+    DATA.faq.splice(i, 1);
+    saveData();
+    renderAdminLists();
+  }
+}
+
+/* =========================================================
+   EXPORT / IMPORT
+   ========================================================= */
+function exportData() {
+  const blob = new Blob([JSON.stringify(DATA, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'risol-mayo-data-' + new Date().toISOString().split('T')[0] + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const imported = JSON.parse(ev.target.result);
+      if (confirm('Import akan menimpa data saat ini. Lanjutkan?')) {
+        DATA = imported;
+        saveData();
+        loadAdminForms();
+        renderAdminLists();
+        alert('✅ Data berhasil diimport!');
+      }
+    } catch (err) {
+      alert('❌ File tidak valid!');
+    }
+  };
+  reader.readAsText(file);
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+document.getElementById('year').innerText = new Date().getFullYear();
+renderAll();
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.navbar-custom');
+  if (window.scrollY > 50) nav.style.boxShadow = '0 5px 25px rgba(0,0,0,0.1)';
+  else nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
 });
-
-function addToCart(name,price){
-
-cart.push({name,price});
-
-document.getElementById("cart-count")
-.innerText =
-cart.length + " Item";
-
-}
-
-function checkoutWA(){
-
-if(cart.length===0){
-
-alert("Keranjang kosong");
-return;
-
-}
-
-let text =
-"Halo Kak, saya ingin memesan:%0A%0A";
-
-let total=0;
-
-cart.forEach(item=>{
-
-text += "• " + item.name + "%0A";
-total += item.price;
-
-});
-
-text += "%0A Total : Rp " +
-total.toLocaleString("id-ID");
-
-window.open(
-"https://wa.me/6281234567890?text="+text
-);
-
-}
-
-function toggleDark(){
-
-document.body.classList.toggle("bg-gray-900");
-document.body.classList.toggle("text-white");
-
-}
-
 </script>
 
 </body>
